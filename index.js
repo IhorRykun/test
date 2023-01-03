@@ -14,7 +14,7 @@ app.listen(PORT, () => {
 });
 
 async function startAPP() {
-  try {
+  try { 
     await mongoose.connect(DB_URL);
     app.listen(PORT, () => {
       console.log('server start working');
