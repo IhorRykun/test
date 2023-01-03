@@ -25,7 +25,7 @@ async function startAPP() {
 }
 
 app.get('/', (req, res) => {
-  res.status(200).json('serever OK');
+  res.status(200).json('serever Ok');
 });
 
-startAPP();
+// startAPP();
