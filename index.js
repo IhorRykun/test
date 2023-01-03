@@ -1,9 +1,31 @@
-const whoNumber = (a, b) => a + b;
+import mongoose from 'mongoose';
+import express from 'express';
 
-console.log(whoNumber(10, 2));
+const PORT = 5000;
 
-const infinA = {
-   a: 5,
-   b: 6,
-   c: 7
-};
+const app = express();
+
+app.use(express.json());
+const DB_URL =
+  'mongodb+srv://Ihor:<password>@cluster0.eai8zf9.mongodb.net/?retryWrites=true&w=majority';
+
+app.listen(PORT, () => {
+  console.log('server start working');
+});
+
+async function startAPP() {
+  try {
+    await mongoose.connect(DB_URL);
+    app.listen(PORT, () => {
+      console.log('server start working');
+    });
+  } catch (e) {
+    console.log(e);
+  }
+}
+
+app.get('/', (req, res) => {
+  res.status(200).json('serever OK');
+});
+
+startAPP();
