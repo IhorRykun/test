@@ -7,14 +7,14 @@ const app = express();
 
 app.use(express.json());
 const DB_URL =
-  'mongodb+srv://Ihor:<password>@cluster0.eai8zf9.mongodb.net/?retryWrites=true&w=majority';
+  'mongosh "mongodb+srv://cluster0.eai8zf9.mongodb.net/myFirstDatabase" --apiVersion 1 --username Ihor';
 
 app.listen(PORT, () => {
   console.log('server start working');
 });
 
 async function startAPP() {
-  try { 
+  try {
     await mongoose.connect(DB_URL);
     app.listen(PORT, () => {
       console.log('server start working');
@@ -24,8 +24,8 @@ async function startAPP() {
   }
 }
 
-app.get('/', (req, res) => {
-  res.status(200).json('serever Ok');
-});
+// app.get('/', (req, res) => {
+//   res.status(200).json('serever Ok');
+// });
 
-// startAPP();
+startAPP();
