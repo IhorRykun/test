@@ -2,7 +2,7 @@ import express from 'express';
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
- res.json({message:`message`})
+ res.status(200).json({message:`message`})
 });
 
 router.post('/', async (req, res, next) => {
