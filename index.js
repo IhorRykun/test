@@ -1,31 +1,15 @@
-import mongoose from 'mongoose';
-import express from 'express';
+import experss from 'express';
+import cors from 'cors';
 
-const PORT = 5000;
+const app = experss();
 
-const app = express();
+app.use(cors());
+app.use(experss.json());
 
-app.use(express.json());
-const DB_URL =
-  'mongosh "mongodb+srv://cluster0.eai8zf9.mongodb.net/myFirstDatabase" --apiVersion 1 --username Ihor';
+app.use(experss.json());
+
+const { PORT = 5000 } = process.env;
 
 app.listen(PORT, () => {
-  console.log('server start working');
+  console.log(`server running. Use our API on port: ${PORT}`);
 });
-
-async function startAPP() {
-  try {
-    await mongoose.connect(DB_URL);
-    app.listen(PORT, () => {
-      console.log('server start working');
-    });
-  } catch (e) {
-    console.log(e);
-  }
-}
-
-// app.get('/', (req, res) => {
-//   res.status(200).json('serever Ok');
-// });
-
-startAPP();
