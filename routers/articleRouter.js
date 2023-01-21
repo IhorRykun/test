@@ -1,8 +1,10 @@
 const express = require('express');
+const { getProducts } = require('../dataBase/repositories/productsRepository');
 const router = express.Router();
 
 router.get('/', async (req, res, next) => {
-  res.status(200).json({ message: `message` });
+  const result = await getProducts();
+  res.status(200).json(result);
 });
 
 router.post('/', async (req, res, next) => {
